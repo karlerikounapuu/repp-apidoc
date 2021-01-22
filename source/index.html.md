@@ -105,15 +105,15 @@ Mark poll message as read
 
 ### URL Parameters
 
-Parameter | Default | Description
+Parameter | Required | Description
 --------- | ------- | -----------
-notification_id | None | Notification ID
+notification_id | Yes | Notification ID
 
 ### Payload Parameters
 
-Parameter | Default | Description
+Parameter | Required | Description
 --------- | ------- | -----------
-read | None | Set to true to mark as read
+read | Yes | Set to true to mark as read
 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
@@ -150,9 +150,9 @@ Get a specific poll message
 
 ### URL Parameters
 
-Parameter | Default | Description
+Parameter | Required | Description
 --------- | ------- | -----------
-notification_id | None | Notification ID
+notification_id | Yes | Notification ID
 
 # Contacts
 
@@ -226,9 +226,190 @@ Get a specific contact
 
 ### URL Parameters
 
-Parameter | Default | Description
+Parameter | Required | Description
 --------- | ------- | -----------
-contact_id | None | Contact ID
+contact_id | Yes | Contact ID
+
+## Delete a specific contact
+
+```shell
+curl --location --request DELETE 'https://registry.test/repp/v1/contacts/ATSAA:KARL' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--data-raw ''
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "code": 1000,
+    "message": "Command completed successfully",
+    "data": {}
+}
+```
+
+> In case contact can not be destroyed, it returns a JSON structured like this:
+
+```json
+{
+    "code": 2305,
+    "message": "Object association prohibits operation [domains]",
+    "data": {}
+}
+```
+
+Delete a specific contact
+
+### HTTP Request
+
+`DELETE /repp/v1/contacts/:contact_id`
+
+### URL Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+contact_id | Yes | Contact ID
+
+## Create a new contact
+
+```shell
+curl --location --request POST 'https://registry.test/repp/v1/contacts' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "contact": {
+        "name": "John Doe",
+        "email": "john@doe.com",
+        "phone": "+372.59014611",
+        "ident": {
+            "ident": "39708290276",
+            "ident_type": "priv",
+            "ident_country_code": "EE"
+        }
+    }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "code": 1000,
+    "message": "Command completed successfully",
+    "data": {
+        "contact": {
+            "id": "ATSAA:84F23FD1"
+        }
+    }
+}
+```
+
+Create a new contact
+
+### HTTP Request
+
+`POST /repp/v1/contacts`
+
+### Payload Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+id | No | Custom contact id for contact
+name | Yes | Full name of contact
+email | Yes | Email address of contact
+phone | Yes | phone number of contact, with '.' as CC separator
+ident[ident] | Yes | Identity / Registry code of contact
+ident[ident_type] | Yes | Type of ident number (priv/org/birthday)
+ident[ident_country_code] | Yes | Nationality of contact in alpha-2 format
+
+## Update an existing contact
+
+```shell
+curl --location --request PUT 'https://registry.test/repp/v1/contacts/ATSAA:84F23FD1' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "contact": {
+        "name": "John Doee",
+        "email": "john@doee.com",
+        "phone": "+372.590146111"
+    }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "code": 1000,
+    "message": "Command completed successfully",
+    "data": {
+        "contact": {
+            "id": "ATSAA:84F23FD1"
+        }
+    }
+}
+```
+
+Update an existing contact
+
+### HTTP Request
+
+`PUT /repp/v1/contacts/:contact_id`
+
+### URL Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+contact_id | Yes | Contact ID
+
+### Payload Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+name | No | Full name of contact
+email | No | Email address of contact
+phone | No | phone number of contact, with '.' as CC separator
+
+## Check contact code availability
+
+```shell
+curl --location --request GET 'https://registry.test/repp/v1/contacts/check/PUDERJAKAPSAS' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--data-raw ''
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "code": 1000,
+    "message": "Command completed successfully",
+    "data": {
+        "contact": {
+            "id": "PUDERJAKAPSAS",
+            "available": true
+        }
+    }
+}
+```
+
+Checks whether the contact code is available for custom use
+
+### HTTP Request
+
+`GET /repp/v1/contacts/check/:contact_id`
+
+### URL Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+contact_id | Yes | Contact ID to check
+
+
+
+
+
 
 
 
@@ -336,132 +517,6 @@ contact_id | None | Contact ID
 | ---- | ----------- |
 | 200 | ok |
 
-# /REPP/V1/CONTACTS
-## ***GET***
-
-**Description:**
-<p>Get all existing contacts</p>
-
-
-### HTTP Request
-`***GET*** /repp/v1/contacts`
-
-**Parameters**
-
-| Name | Located in | Description | Required | Type |
-| ---- | ---------- | ----------- | -------- | ---- |
-
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | ok |
-
-## ***POST***
-
-**Description:**
-<p>Create a new contact</p>
-
-
-### HTTP Request
-`***POST*** /repp/v1/contacts`
-
-**Parameters**
-
-| Name | Located in | Description | Required | Type |
-| ---- | ---------- | ----------- | -------- | ---- |
-
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | ok |
-
-# /REPP/V1/CONTACTS/{CONTACT_CODE}
-## ***DELETE***
-
-**Description:**
-<p>Delete a specific contact</p>
-
-
-### HTTP Request
-`***DELETE*** /repp/v1/contacts/{contact_code}`
-
-**Parameters**
-
-| Name | Located in | Description | Required | Type |
-| ---- | ---------- | ----------- | -------- | ---- |
-| contact_code | path |  | Yes | number |
-
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | ok |
-
-## ***GET***
-
-**Description:**
-<p>Get a specific contact</p>
-
-
-### HTTP Request
-`***GET*** /repp/v1/contacts/{contact_code}`
-
-**Parameters**
-
-| Name | Located in | Description | Required | Type |
-| ---- | ---------- | ----------- | -------- | ---- |
-| contact_code | path |  | Yes | number |
-
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | ok |
-
-## ***PUT***
-
-**Description:**
-<p>Update existing contact</p>
-
-
-### HTTP Request
-`***PUT*** /repp/v1/contacts/{contact_code}`
-
-**Parameters**
-
-| Name | Located in | Description | Required | Type |
-| ---- | ---------- | ----------- | -------- | ---- |
-| contact_code | path |  | Yes | number |
-
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | ok |
-
-# /REPP/V1/CONTACTS/CHECK/{CONTACT_CODE}
-## ***GET***
-
-**Description:**
-<p>Check contact code availability</p>
-
-
-### HTTP Request
-`***GET*** /repp/v1/contacts/check/{contact_code}`
-
-**Parameters**
-
-| Name | Located in | Description | Required | Type |
-| ---- | ---------- | ----------- | -------- | ---- |
-| contact_code | path |  | Yes | number |
-
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | ok |
 
 # /REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER
 ## ***POST***
