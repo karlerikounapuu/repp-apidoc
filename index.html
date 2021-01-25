@@ -378,9 +378,6 @@
                     <a href="#get-domain-transfer-info" class="toc-h2 toc-link" data-title="Get domain transfer info">Get domain transfer info</a>
                   </li>
                   <li>
-                    <a href="#get-domain-39-s-dnssec-keys" class="toc-h2 toc-link" data-title="Get domain's DNSSEC keys">Get domain's DNSSEC keys</a>
-                  </li>
-                  <li>
                     <a href="#get-domain-transfer-info-2" class="toc-h2 toc-link" data-title="Get domain transfer info">Get domain transfer info</a>
                   </li>
               </ul>
@@ -399,6 +396,9 @@
           <li>
             <a href="#dnssec" class="toc-h1 toc-link" data-title="DNSSEC">DNSSEC</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-domain-39-s-dnssec-keys" class="toc-h2 toc-link" data-title="Get domain's DNSSEC keys">Get domain's DNSSEC keys</a>
+                  </li>
                   <li>
                     <a href="#add-new-dnssec-key" class="toc-h2 toc-link" data-title="Add new DNSSEC key">Add new DNSSEC key</a>
                   </li>
@@ -1478,45 +1478,6 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Queried domain&#39;s EPP auth code</td>
 </tr>
 </tbody></table>
-<h2 id='get-domain-39-s-dnssec-keys'>Get domain&#39;s DNSSEC keys</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
-<span class="nt">--data-raw</span> <span class="s1">''</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"dns_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">257</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pubkeyhere"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Gets a specific domain&#39;s DNSSEC keys</p>
-<h3 id='http-request-17'>HTTP Request</h3>
-<p><code>GET /repp/v1/domains/:domain_name/dnssec</code></p>
-<h3 id='url-parameters-12'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>domain_name</td>
-<td>Yes</td>
-<td>Domain name</td>
-</tr>
-</tbody></table>
 <h2 id='get-domain-transfer-info-2'>Get domain transfer info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/transfer_info'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Auth-Code: 6699fb661ee3a2006a3d1e5833d7c5abv'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
@@ -1589,9 +1550,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Gets a specific domain&#39;s transfer info</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET /repp/v1/domains/:domain_name/transfer_info</code></p>
-<h3 id='url-parameters-13'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1648,9 +1609,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Add new nameserver(s) to specific domain</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>POST /repp/v1/domains/:domain_name/nameservers</code></p>
-<h3 id='url-parameters-14'>URL Parameters</h3>
+<h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1716,9 +1677,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Delete existing nameserver from domain.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>DELETE /repp/v1/domains/:domain_name/nameservers/:nameserver_hostname</code></p>
-<h3 id='url-parameters-15'>URL Parameters</h3>
+<h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1737,7 +1698,46 @@ Remember — a happy kitten is an authenticated kitten!
 <td>nameserver hostname to delete</td>
 </tr>
 </tbody></table>
-<h1 id='dnssec'>DNSSEC</h1><h2 id='add-new-dnssec-key'>Add new DNSSEC key</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
+<h1 id='dnssec'>DNSSEC</h1><h2 id='get-domain-39-s-dnssec-keys'>Get domain&#39;s DNSSEC keys</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">''</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"dns_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">257</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pubkeyhere"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets a specific domain&#39;s DNSSEC keys</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>GET /repp/v1/domains/:domain_name/dnssec</code></p>
+<h3 id='url-parameters-15'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domain_name</td>
+<td>Yes</td>
+<td>Domain name</td>
+</tr>
+</tbody></table>
+<h2 id='add-new-dnssec-key'>Add new DNSSEC key</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
