@@ -1294,12 +1294,39 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </tbody></table>
 <h3 id='payload-parameters-5'>Payload Parameters</h3>
-<p>Parameter | Required | Type | Description
---------- | ------- | -----------
-registrant | Yes | Object | New registrant object
-registrant[code] | Yes | String | Contact ID of new registrant
-registrant[verified] | Boolean | Defaults to false. Include it only if set to true.
-auth_info | False | String | New EPP authorization code for domain</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>registrant</td>
+<td>Yes</td>
+<td>Object</td>
+<td>New registrant object</td>
+</tr>
+<tr>
+<td>registrant[code]</td>
+<td>Yes</td>
+<td>String</td>
+<td>Contact ID of new registrant</td>
+</tr>
+<tr>
+<td>registrant[verified]</td>
+<td>Boolean</td>
+<td>Defaults to false. Include it only if set to true.</td>
+<td></td>
+</tr>
+<tr>
+<td>auth_info</td>
+<td>False</td>
+<td>String</td>
+<td>New EPP authorization code for domain</td>
+</tr>
+</tbody></table>
 <h2 id='post'><strong><em>POST</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Renew domain</p></p>
