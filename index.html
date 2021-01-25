@@ -312,6 +312,14 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
+            <a href="#billing" class="toc-h1 toc-link" data-title="Billing">Billing</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-account-balance" class="toc-h2 toc-link" data-title="Get account balance">Get account balance</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#poll-messages" class="toc-h1 toc-link" data-title="Poll messages">Poll messages</a>
               <ul class="toc-list-h2">
                   <li>
@@ -345,6 +353,23 @@
                   </li>
                   <li>
                     <a href="#check-contact-code-availability" class="toc-h2 toc-link" data-title="Check contact code availability">Check contact code availability</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#domains" class="toc-h1 toc-link" data-title="Domains">Domains</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-existing-domains" class="toc-h2 toc-link" data-title="Get all existing domains">Get all existing domains</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-domain" class="toc-h2 toc-link" data-title="Get a specific domain">Get a specific domain</a>
+                  </li>
+                  <li>
+                    <a href="#register-a-new-domain" class="toc-h2 toc-link" data-title="Register a new domain">Register a new domain</a>
+                  </li>
+                  <li>
+                    <a href="#change-domain-registrant-auth-code" class="toc-h2 toc-link" data-title="Change domain registrant / Auth code">Change domain registrant / Auth code</a>
                   </li>
                   <li>
                     <a href="#post" class="toc-h2 toc-link" data-title="POST"><strong><em>POST</em></strong></a>
@@ -387,25 +412,11 @@
                   <li>
                     <a href="#delete-2" class="toc-h2 toc-link" data-title="DELETE"><strong><em>DELETE</em></strong></a>
                   </li>
-                  <li>
-                    <a href="#put" class="toc-h2 toc-link" data-title="PUT"><strong><em>PUT</em></strong></a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#repp-v1-registrar-notifications-notification_id" class="toc-h1 toc-link" data-title="/REPP/V1/REGISTRAR/NOTIFICATIONS/{NOTIFICATION_ID}">/REPP/V1/REGISTRAR/NOTIFICATIONS/{NOTIFICATION_ID}</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-2" class="toc-h2 toc-link" data-title="GET"><strong><em>GET</em></strong></a>
-                  </li>
               </ul>
           </li>
           <li>
             <a href="#repp-v1-domains" class="toc-h1 toc-link" data-title="/REPP/V1/DOMAINS">/REPP/V1/DOMAINS</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-3" class="toc-h2 toc-link" data-title="GET"><strong><em>GET</em></strong></a>
-                  </li>
                   <li>
                     <a href="#post-5" class="toc-h2 toc-link" data-title="POST"><strong><em>POST</em></strong></a>
                   </li>
@@ -415,10 +426,7 @@
             <a href="#repp-v1-domains-domain_name" class="toc-h1 toc-link" data-title="/REPP/V1/DOMAINS/{DOMAIN_NAME}">/REPP/V1/DOMAINS/{DOMAIN_NAME}</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-4" class="toc-h2 toc-link" data-title="GET"><strong><em>GET</em></strong></a>
-                  </li>
-                  <li>
-                    <a href="#put-2" class="toc-h2 toc-link" data-title="PUT"><strong><em>PUT</em></strong></a>
+                    <a href="#put" class="toc-h2 toc-link" data-title="PUT"><strong><em>PUT</em></strong></a>
                   </li>
               </ul>
           </li>
@@ -426,7 +434,7 @@
             <a href="#repp-v1-domains-domain_name-transfer_info" class="toc-h1 toc-link" data-title="/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER_INFO">/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER_INFO</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-5" class="toc-h2 toc-link" data-title="GET"><strong><em>GET</em></strong></a>
+                    <a href="#get-2" class="toc-h2 toc-link" data-title="GET"><strong><em>GET</em></strong></a>
                   </li>
               </ul>
           </li>
@@ -435,14 +443,6 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#post-6" class="toc-h2 toc-link" data-title="POST"><strong><em>POST</em></strong></a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#repp-v1-accounts-balance" class="toc-h1 toc-link" data-title="/REPP/V1/ACCOUNTS/BALANCE">/REPP/V1/ACCOUNTS/BALANCE</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-6" class="toc-h2 toc-link" data-title="GET"><strong><em>GET</em></strong></a>
                   </li>
               </ul>
           </li>
@@ -478,6 +478,25 @@
 <aside class="notice">
 You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 </aside>
+<h1 id='billing'>Billing</h1><h2 id='get-account-balance'>Get account balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/accounts/balance'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">''</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"420.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get account balance</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /repp/v1/accounts/balance</code></p>
 <h1 id='poll-messages'>Poll messages</h1><h2 id='get-latest-unread-poll-message'>Get latest unread poll message</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/registrar/notifications'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
@@ -497,7 +516,7 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Get the latest unread poll message</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /repp/v1/registrar/notifications</code></p>
 <h2 id='mark-poll-message-as-read'>Mark poll message as read</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/registrar/notifications/1398'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
@@ -521,7 +540,7 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Mark poll message as read</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>PUT /repp/v1/registrar/notifications/:notification_id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -574,7 +593,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Get a specific poll message</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PUT /repp/v1/registrar/notifications/:notification_id</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -607,7 +626,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Get all contacts</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET /repp/v1/registrar/contacts</code></p>
 <h2 id='get-a-specific-contact'>Get a specific contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/contacts/ATSAA:KARL'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
@@ -640,7 +659,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Get a specific contact</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET /repp/v1/contacts/:contact_id</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
@@ -679,7 +698,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Delete a specific contact</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>DELETE /repp/v1/contacts/:contact_id</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
@@ -725,7 +744,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Create a new contact</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>POST /repp/v1/contacts</code></p>
 <h3 id='payload-parameters-2'>Payload Parameters</h3>
 <table><thead>
@@ -796,7 +815,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Update an existing contact</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>PUT /repp/v1/contacts/:contact_id</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
@@ -855,7 +874,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Checks whether the contact code is available for custom use</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET /repp/v1/contacts/check/:contact_id</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -871,10 +890,304 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Contact ID to check</td>
 </tr>
 </tbody></table>
+<h1 id='domains'>Domains</h1><h2 id='get-all-existing-domains'>Get all existing domains</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">''</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"kass.ee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"koer.ee"</span><span class="p">,</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"total_number_of_records"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>When ?details=true is appended, it returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kass.ee"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"registrar_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"valid_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-23T00:00:00.000+03:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"registrant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-22T14:16:47.420+03:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-18T10:59:06.344+02:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name_dirty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kass.ee"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name_puny"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kass.ee"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"period_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"y"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"creator_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-ApiUser: test"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updator_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"job - DomainUpdateConfirmJob - confirmed by email link, user not authenticated"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"outzone_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"delete_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"registrant_verification_asked_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-18T10:59:05.240+02:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"registrant_verification_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6edd80c248db682a0c2b2e02877cdfc528243a59942fe05fae164848a5df9c5e4aa2a9875b1cf42c64b4"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pending_json"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"force_delete_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"serverRenewProhibited"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"pendingUpdate"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"status_notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"ok"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"pendingDelete"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"pendingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"serverRenewProhibited"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"upid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"up_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-13T14:41:58.613+02:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6b6affa7-1449-4bd8-acf5-8b4752406705"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"locked_by_registrant_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"force_delete_start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"force_delete_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"auth_info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"367b1e6d1f0d9aa190971ad8f571cd4d"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-22T14:16:47.420+03:00"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"koer.ee"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"registrar_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"valid_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-12-08T00:00:00.000+02:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"registrant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-07T12:29:04.099+02:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-05T15:36:35.342+02:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name_dirty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"koer.ee"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name_puny"</span><span class="p">:</span><span class="w"> </span><span class="s2">"koer.ee"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"period_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"y"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"creator_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-ApiUser: test"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updator_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-ApiUser: test"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"outzone_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"delete_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"registrant_verification_asked_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"registrant_verification_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pending_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+                </span><span class="nl">"force_delete_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"ok"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"status_notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+                </span><span class="nl">"upid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"up_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-05T15:36:35.080+02:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b43635ca-46c6-4af6-a852-fdb13dd69b7f"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"locked_by_registrant_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"force_delete_start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"force_delete_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"auth_info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8b8f673ed4ac1fbc0147c75eb0e6aaa4"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"valid_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-07T12:29:04.099+02:00"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"total_number_of_records"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets all existing domains under current registrar account.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET /repp/v1/registrar/domains</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<p>Parameter | Required | Default | Description
+--------- | ------- | -----------
+limit | No | 200 | How many objects to return
+offset | No | 0 | Object query offset
+details | No | | false | Show full object each domain</p>
+<h2 id='get-a-specific-domain'>Get a specific domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/biz.ee'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">''</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cd1be00a-58bb-4bee-9b5c-279e90bb5e24"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz.ee"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"registrar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20 ALLA OU"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://20alla.ee"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"registered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T12:07:20.079+02:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"valid_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-16T00:00:00.000+02:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T12:07:20.079+02:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-21T16:41:59.707+02:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"registrant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca79c932-41ff-4d2e-8479-f0e58275e077"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"tech_contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"020417df-cf4c-43ea-a454-9e300c504c61"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"admin_contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20417232-59a0-4dd3-b5db-243414724c0d"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"transfer_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f81ec671b69a2aa5d6375631e259ae7"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name_dirty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz.ee"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name_puny"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biz.ee"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"period_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"y"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"creator_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-ApiUser: test"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updator_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"outzone_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"delete_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"registrant_verification_asked_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"registrant_verification_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pending_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="nl">"force_delete_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"inactive"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"locked_by_registrant_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status_notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"pendingDelete"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pendingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"nameservers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"dnssec_keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"dnssec_changed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets a specific domain object</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET /repp/v1/domains/:domain_name</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domain_name</td>
+<td>No</td>
+<td>Domain name</td>
+</tr>
+</tbody></table>
+<h2 id='register-a-new-domain'>Register a new domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "domain": {
+        "name": "kasskoer.ee",
+        "registrant_id": "ATSAA:KARL",
+        "period": 1,
+        "period_unit": "y",
+        "admin_domain_contacts_attributes": [
+            "ATSAA:KARL"
+        ],
+        "tech_domain_contacts_attributes": [
+            "ATSAA:KARL"
+        ],
+        "nameservers_attributes": [
+            {
+                "hostname": "ns1.kreative.ee"
+            }
+        ]
+    }
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kasskoer.ee"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Register a new domain</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>POST /repp/v1/domains</code></p>
+<h3 id='payload-parameters-4'>Payload Parameters</h3>
+<p>Parameter | Required | Type | Description
+--------- | ------- | -----------
+name | Yes | String | Domain name
+registrant_id | Yes | String | Registrant contact code
+period_unit | Yes | String | Period unit. Can be year (y) or month (m)
+period | Yes | Integer | For how many period units to register domain
+admin_domain_contact_attributes | No | Array | Array of admin domain contact codes
+tech_domain_contact_attributes | No | Array | Array of tech domain contact codes
+nameservers_attributes | No | Array | Array of nameserver objects
+nameservers_attributes[hostname] | Yes | String | Hostname of nameserver
+nameservers_attributes[ipv4] | Yes | Array | Array of IPv4 attributes
+nameservers_attributes[ipv6] | Yes | Array | Array of IPv6 attributes
+dnskeys_attributes | No | Array | Array of DNSSEC key attributes
+dnskeys_attributes[flags] | Yes | String | 256 (KSK) or 257 (ZSK)
+dnskeys_attributes[protocol] | Yes | String | Key protocol (3)
+dnskeys_attributes[alg] | Yes | String | DNSSEC key algorithm (3,5,6,7,8,10,13,14)
+dnskeys_attributes[public_key] | Yes | String | DNSSEC public key</p>
+<h2 id='change-domain-registrant-auth-code'>Change domain registrant / Auth code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/domains/kasskoer.ee'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "domain": {
+        "registrant": {
+            "code": "ATSAA:LIZ"
+        },
+        "auth_info": "123"
+    }
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kasskoer.ee"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Changes domain registrant or auth code</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST /repp/v1/domains/:domain_name</code></p>
+<h3 id='url-parameters-9'>URL Parameters</h3>
+<p>Parameter | Required | Type | Description
+--------- | ------- | -----------
+domain_name | Yes | String | Domain name</p>
+<h3 id='payload-parameters-5'>Payload Parameters</h3>
+<p>Parameter | Required | Type | Description
+--------- | ------- | -----------
+registrant | Yes | Object | New registrant object
+registrant[code] | Yes | String | Contact ID of new registrant
+registrant[verified] | Boolean | Defaults to false. Include it only if set to true.
+auth_info | False | String | New EPP authorization code for domain</p>
 <h2 id='post'><strong><em>POST</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Renew domain</p></p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>***POST*** /repp/v1/domains/{domain_name}/renew</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -920,7 +1233,7 @@ Remember — a happy kitten is an authenticated kitten!
 <h1 id='repp-v1-domains-domain_name-dnssec'>/REPP/V1/DOMAINS/{DOMAIN_NAME}/DNSSEC</h1><h2 id='get'><strong><em>GET</em></strong></h2>
 <p><strong>Description:</strong>
 <p>View specific domain&#39;s DNSSEC keys</p></p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>***GET*** /repp/v1/domains/{domain_name}/dnssec</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -959,7 +1272,7 @@ Remember — a happy kitten is an authenticated kitten!
 <h2 id='post-2'><strong><em>POST</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Create a new DNSSEC key(s) for domain</p></p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>***POST*** /repp/v1/domains/{domain_name}/dnssec</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -1004,7 +1317,7 @@ Remember — a happy kitten is an authenticated kitten!
 </tbody></table>
 <h2 id='delete'><strong><em>DELETE</em></strong></h2>
 <p><strong>Description:</strong></p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>***DELETE*** /repp/v1/domains/{domain_name}/dnssec</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -1050,7 +1363,7 @@ Remember — a happy kitten is an authenticated kitten!
 <h1 id='repp-v1-domains-domain_name-transfer'>/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER</h1><h2 id='post-3'><strong><em>POST</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Transfer a specific domain</p></p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>***POST*** /repp/v1/domains/{domain_name}/transfer</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -1096,7 +1409,7 @@ Remember — a happy kitten is an authenticated kitten!
 <h1 id='repp-v1-domains-domain_name-nameservers'>/REPP/V1/DOMAINS/{DOMAIN_NAME}/NAMESERVERS</h1><h2 id='post-4'><strong><em>POST</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Create new nameserver for domain</p></p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>***POST*** /repp/v1/domains/{domain_name}/nameservers</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -1142,7 +1455,7 @@ Remember — a happy kitten is an authenticated kitten!
 <h1 id='repp-v1-domains-domain-nameservers-nameserver'>/REPP/V1/DOMAINS/{DOMAIN}/NAMESERVERS/{NAMESERVER}</h1><h2 id='delete-2'><strong><em>DELETE</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Delete specific nameserver from domain</p></p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>***DELETE*** /repp/v1/domains/{domain}/nameservers/{nameserver}</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -1185,120 +1498,10 @@ Remember — a happy kitten is an authenticated kitten!
 <td>ok</td>
 </tr>
 </tbody></table>
-<h2 id='put'><strong><em>PUT</em></strong></h2>
-<p><strong>Description:</strong>
-<p>Mark poll message as read</p></p>
-<h3 id='http-request-17'>HTTP Request</h3>
-<p><code>***PUT*** /repp/v1/registrar/notifications</code></p>
-
-<p><strong>Parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Located in</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>body</td>
-<td>body</td>
-<td></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p><strong>Responses</strong></p>
-
-<table><thead>
-<tr>
-<th>Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>ok</td>
-</tr>
-</tbody></table>
-<h1 id='repp-v1-registrar-notifications-notification_id'>/REPP/V1/REGISTRAR/NOTIFICATIONS/{NOTIFICATION_ID}</h1><h2 id='get-2'><strong><em>GET</em></strong></h2>
-<p><strong>Description:</strong>
-<p>Get a specific poll message</p></p>
-<h3 id='http-request-18'>HTTP Request</h3>
-<p><code>***GET*** /repp/v1/registrar/notifications/{notification_id}</code></p>
-
-<p><strong>Parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Located in</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>notification_id</td>
-<td>path</td>
-<td></td>
-<td>Yes</td>
-<td>number</td>
-</tr>
-</tbody></table>
-
-<p><strong>Responses</strong></p>
-
-<table><thead>
-<tr>
-<th>Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>ok</td>
-</tr>
-</tbody></table>
-<h1 id='repp-v1-domains'>/REPP/V1/DOMAINS</h1><h2 id='get-3'><strong><em>GET</em></strong></h2>
-<p><strong>Description:</strong>
-<p>Get all existing domains</p></p>
-<h3 id='http-request-19'>HTTP Request</h3>
-<p><code>***GET*** /repp/v1/domains</code></p>
-
-<p><strong>Parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Located in</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
-<p><strong>Responses</strong></p>
-
-<table><thead>
-<tr>
-<th>Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>ok</td>
-</tr>
-</tbody></table>
-<h2 id='post-5'><strong><em>POST</em></strong></h2>
+<h1 id='repp-v1-domains'>/REPP/V1/DOMAINS</h1><h2 id='post-5'><strong><em>POST</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Create a new domain</p></p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>***POST*** /repp/v1/domains</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -1334,49 +1537,10 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Successful domain registration response</td>
 </tr>
 </tbody></table>
-<h1 id='repp-v1-domains-domain_name'>/REPP/V1/DOMAINS/{DOMAIN_NAME}</h1><h2 id='get-4'><strong><em>GET</em></strong></h2>
-<p><strong>Description:</strong>
-<p>Get a specific domain</p></p>
-<h3 id='http-request-21'>HTTP Request</h3>
-<p><code>***GET*** /repp/v1/domains/{domain_name}</code></p>
-
-<p><strong>Parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Located in</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>domain_name</td>
-<td>path</td>
-<td></td>
-<td>Yes</td>
-<td>number</td>
-</tr>
-</tbody></table>
-
-<p><strong>Responses</strong></p>
-
-<table><thead>
-<tr>
-<th>Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>ok</td>
-</tr>
-</tbody></table>
-<h2 id='put-2'><strong><em>PUT</em></strong></h2>
+<h1 id='repp-v1-domains-domain_name'>/REPP/V1/DOMAINS/{DOMAIN_NAME}</h1><h2 id='put'><strong><em>PUT</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Update existing domain</p></p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>***PUT*** /repp/v1/domains/{domain_name}</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -1419,10 +1583,10 @@ Remember — a happy kitten is an authenticated kitten!
 <td>ok</td>
 </tr>
 </tbody></table>
-<h1 id='repp-v1-domains-domain_name-transfer_info'>/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER_INFO</h1><h2 id='get-5'><strong><em>GET</em></strong></h2>
+<h1 id='repp-v1-domains-domain_name-transfer_info'>/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER_INFO</h1><h2 id='get-2'><strong><em>GET</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Retrieve specific domain&#39;s transfer info</p></p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>***GET*** /repp/v1/domains/{domain_name}/transfer_info</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -1461,40 +1625,8 @@ Remember — a happy kitten is an authenticated kitten!
 <h1 id='repp-v1-domains-transfer'>/REPP/V1/DOMAINS/TRANSFER</h1><h2 id='post-6'><strong><em>POST</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Transfer multiple domains</p></p>
-<h3 id='http-request-24'>HTTP Request</h3>
-<p><code>***POST*** /repp/v1/domains/transfer</code></p>
-
-<p><strong>Parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Located in</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
-<p><strong>Responses</strong></p>
-
-<table><thead>
-<tr>
-<th>Code</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>ok</td>
-</tr>
-</tbody></table>
-<h1 id='repp-v1-accounts-balance'>/REPP/V1/ACCOUNTS/BALANCE</h1><h2 id='get-6'><strong><em>GET</em></strong></h2>
-<p><strong>Description:</strong>
-<p>Get account&#39;s balance</p></p>
 <h3 id='http-request-25'>HTTP Request</h3>
-<p><code>***GET*** /repp/v1/accounts/balance</code></p>
+<p><code>***POST*** /repp/v1/domains/transfer</code></p>
 
 <p><strong>Parameters</strong></p>
 
