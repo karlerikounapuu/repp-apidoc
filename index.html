@@ -383,17 +383,27 @@
                   <li>
                     <a href="#get-domain-transfer-info-2" class="toc-h2 toc-link" data-title="Get domain transfer info">Get domain transfer info</a>
                   </li>
-                  <li>
-                    <a href="#add-new-dnssec-key" class="toc-h2 toc-link" data-title="Add new DNSSEC key">Add new DNSSEC key</a>
-                  </li>
-                  <li>
-                    <a href="#delete-dnssec-key" class="toc-h2 toc-link" data-title="Delete DNSSEC key">Delete DNSSEC key</a>
-                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#nameservers" class="toc-h1 toc-link" data-title="Nameservers">Nameservers</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#add-new-nameserver" class="toc-h2 toc-link" data-title="Add new nameserver">Add new nameserver</a>
                   </li>
                   <li>
                     <a href="#delete-existing-nameserver" class="toc-h2 toc-link" data-title="Delete existing nameserver">Delete existing nameserver</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#dnssec" class="toc-h1 toc-link" data-title="DNSSEC">DNSSEC</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-new-dnssec-key" class="toc-h2 toc-link" data-title="Add new DNSSEC key">Add new DNSSEC key</a>
+                  </li>
+                  <li>
+                    <a href="#delete-dnssec-key" class="toc-h2 toc-link" data-title="Delete DNSSEC key">Delete DNSSEC key</a>
                   </li>
               </ul>
           </li>
@@ -1611,7 +1621,123 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Queried domain&#39;s EPP auth code</td>
 </tr>
 </tbody></table>
-<h2 id='add-new-dnssec-key'>Add new DNSSEC key</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
+<h1 id='nameservers'>Nameservers</h1><h2 id='add-new-nameserver'>Add new nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/nameservers'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "nameservers": [
+        {
+            "hostname": "ns1.domainer.ee",
+            "ipv4": ["192.168.1.1"],
+            "ipv6": ["2620:119:35::35"]
+        }
+    ]
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"666.ee"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Add new nameserver(s) to specific domain</p>
+<h3 id='http-request-19'>HTTP Request</h3>
+<p><code>POST /repp/v1/domains/:domain_name/nameservers</code></p>
+<h3 id='url-parameters-14'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domain_name</td>
+<td>Yes</td>
+<td>Domain name</td>
+</tr>
+</tbody></table>
+<h3 id='payload-parameters-7'>Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nameservers</td>
+<td>Yes</td>
+<td>Array</td>
+<td>Array of new nameserver objects</td>
+</tr>
+<tr>
+<td>nameservers[hostname]</td>
+<td>Yes</td>
+<td>Hostname of nameserver</td>
+<td></td>
+</tr>
+<tr>
+<td>nameservers[ipv4]</td>
+<td>No</td>
+<td>Array</td>
+<td>Array of IPv4 addresses</td>
+</tr>
+<tr>
+<td>nameservers[ipv6]</td>
+<td>No</td>
+<td>Array</td>
+<td>Array of IPv6 addresses</td>
+</tr>
+</tbody></table>
+<h2 id='delete-existing-nameserver'>Delete existing nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/nameservers/ns3.domainer.ee'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">''</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"666.ee"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Delete existing nameserver from domain.</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>DELETE /repp/v1/domains/:domain_name/nameservers/:nameserver_hostname</code></p>
+<h3 id='url-parameters-15'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domain_name</td>
+<td>Yes</td>
+<td>Domain name</td>
+</tr>
+<tr>
+<td>nameserver_hostname</td>
+<td>Yes</td>
+<td>nameserver hostname to delete</td>
+</tr>
+</tbody></table>
+<h1 id='dnssec'>DNSSEC</h1><h2 id='add-new-dnssec-key'>Add new DNSSEC key</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1639,9 +1765,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Add new DNSSEC key(s) to specific domain</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST /repp/v1/domains/:domain_name/dnssec</code></p>
-<h3 id='url-parameters-14'>URL Parameters</h3>
+<h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1655,7 +1781,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Domain name</td>
 </tr>
 </tbody></table>
-<h3 id='payload-parameters-7'>Payload Parameters</h3>
+<h3 id='payload-parameters-8'>Payload Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1723,9 +1849,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Deletes one or many DNSSEC key(s) for specific domain.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>DELETE /repp/v1/domains/:domain_name/dnssec</code></p>
-<h3 id='url-parameters-15'>URL Parameters</h3>
+<h3 id='url-parameters-17'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1739,7 +1865,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Domain name</td>
 </tr>
 </tbody></table>
-<h3 id='payload-parameters-8'>Payload Parameters</h3>
+<h3 id='payload-parameters-9'>Payload Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1777,122 +1903,6 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Yes</td>
 <td>String</td>
 <td>Public key of existing DNSSEC key</td>
-</tr>
-</tbody></table>
-<h2 id='add-new-nameserver'>Add new nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/nameservers'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--data-raw</span> <span class="s1">'{
-    "nameservers": [
-        {
-            "hostname": "ns1.domainer.ee",
-            "ipv4": ["192.168.1.1"],
-            "ipv6": ["2620:119:35::35"]
-        }
-    ]
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"666.ee"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Add new nameserver(s) to specific domain</p>
-<h3 id='http-request-21'>HTTP Request</h3>
-<p><code>POST /repp/v1/domains/:domain_name/nameservers</code></p>
-<h3 id='url-parameters-16'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>domain_name</td>
-<td>Yes</td>
-<td>Domain name</td>
-</tr>
-</tbody></table>
-<h3 id='payload-parameters-9'>Payload Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>nameservers</td>
-<td>Yes</td>
-<td>Array</td>
-<td>Array of new nameserver objects</td>
-</tr>
-<tr>
-<td>nameservers[hostname]</td>
-<td>Yes</td>
-<td>Hostname of nameserver</td>
-<td></td>
-</tr>
-<tr>
-<td>nameservers[ipv4]</td>
-<td>No</td>
-<td>Array</td>
-<td>Array of IPv4 addresses</td>
-</tr>
-<tr>
-<td>nameservers[ipv6]</td>
-<td>No</td>
-<td>Array</td>
-<td>Array of IPv6 addresses</td>
-</tr>
-</tbody></table>
-<h2 id='delete-existing-nameserver'>Delete existing nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/nameservers/ns3.domainer.ee'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
-<span class="nt">--data-raw</span> <span class="s1">''</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"666.ee"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Delete existing nameserver from domain.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
-<p><code>DELETE /repp/v1/domains/:domain_name/nameservers/:nameserver_hostname</code></p>
-<h3 id='url-parameters-17'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>domain_name</td>
-<td>Yes</td>
-<td>Domain name</td>
-</tr>
-<tr>
-<td>nameserver_hostname</td>
-<td>Yes</td>
-<td>nameserver hostname to delete</td>
 </tr>
 </tbody></table>
 <h1 id='repp-v1-domains-domain_name-transfer'>/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER</h1><h2 id='post'><strong><em>POST</em></strong></h2>
