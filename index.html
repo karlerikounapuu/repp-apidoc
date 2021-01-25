@@ -309,6 +309,9 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#environments" class="toc-h1 toc-link" data-title="Environments">Environments</a>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
@@ -446,7 +449,13 @@
 
 <p>We have language bindings in Shell. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
-<p>This API project is only available for our active registrars. You can find more information about becoming registrar at our <a href="https://www.internet.ee/registrars/terms-and-conditions-for-becoming-a-registrar">wiki page</a>.</p>
+<p>This production API project is only available for our active registrars. You can find more information about becoming registrar at our <a href="https://www.internet.ee/registrars/terms-and-conditions-for-becoming-a-registrar">wiki page</a>.</p>
+<h1 id='environments'>Environments</h1>
+<p>Production endpoint: https://registrar.internet.ee/repp/v1/
+Sandbox endpoint: https://testrar.internet.ee/repp/v1/</p>
+
+<p>Production environment is only available for our active registrars.
+Access to our sandbox environment is not publicly available. We can grant access to third parties upon request.</p>
 <h1 id='authentication'>Authentication</h1>
 <p>REPP uses API keys and certificates to allow access to our API. Certificates are the same ones that are used for EPP protocol.</p>
 
@@ -461,7 +470,7 @@
 <aside class="notice">
 You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 </aside>
-<h1 id='billing'>Billing</h1><h2 id='get-account-balance'>Get account balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/accounts/balance'</span> <span class="se">\</span>
+<h1 id='billing'>Billing</h1><h2 id='get-account-balance'>Get account balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/accounts/balance'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -480,7 +489,7 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 <p>Get account balance</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /repp/v1/accounts/balance</code></p>
-<h1 id='poll-messages'>Poll messages</h1><h2 id='get-latest-unread-poll-message'>Get latest unread poll message</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/registrar/notifications'</span> <span class="se">\</span>
+<h1 id='poll-messages'>Poll messages</h1><h2 id='get-latest-unread-poll-message'>Get latest unread poll message</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/registrar/notifications'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -501,7 +510,7 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 <p>Get the latest unread poll message</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /repp/v1/registrar/notifications</code></p>
-<h2 id='mark-poll-message-as-read'>Mark poll message as read</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/registrar/notifications/1398'</span> <span class="se">\</span>
+<h2 id='mark-poll-message-as-read'>Mark poll message as read</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://testrar.internet.ee/repp/v1/registrar/notifications/1398'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -557,7 +566,7 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
-<h2 id='get-a-specific-poll-message'>Get a specific poll message</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/registrar/notifications/1398'</span> <span class="se">\</span>
+<h2 id='get-a-specific-poll-message'>Get a specific poll message</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/registrar/notifications/1398'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -592,7 +601,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Notification ID</td>
 </tr>
 </tbody></table>
-<h1 id='contacts'>Contacts</h1><h2 id='get-all-contacts'>Get all contacts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/contacts'</span> <span class="se">\</span>
+<h1 id='contacts'>Contacts</h1><h2 id='get-all-contacts'>Get all contacts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/contacts'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -611,7 +620,7 @@ Remember — a happy kitten is an authenticated kitten!
 <p>Get all contacts</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET /repp/v1/registrar/contacts</code></p>
-<h2 id='get-a-specific-contact'>Get a specific contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/contacts/ATSAA:KARL'</span> <span class="se">\</span>
+<h2 id='get-a-specific-contact'>Get a specific contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/contacts/ATSAA:KARL'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -658,7 +667,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Contact ID</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-contact'>Delete a specific contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://registry.test/repp/v1/contacts/ATSAA:KARL'</span> <span class="se">\</span>
+<h2 id='delete-a-specific-contact'>Delete a specific contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://testrar.internet.ee/repp/v1/contacts/ATSAA:KARL'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -697,7 +706,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Contact ID</td>
 </tr>
 </tbody></table>
-<h2 id='create-a-new-contact'>Create a new contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/contacts'</span> <span class="se">\</span>
+<h2 id='create-a-new-contact'>Create a new contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/contacts'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -773,7 +782,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Nationality of contact in alpha-2 format</td>
 </tr>
 </tbody></table>
-<h2 id='update-an-existing-contact'>Update an existing contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/contacts/ATSAA:84F23FD1'</span> <span class="se">\</span>
+<h2 id='update-an-existing-contact'>Update an existing contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://testrar.internet.ee/repp/v1/contacts/ATSAA:84F23FD1'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -838,7 +847,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>phone number of contact, with &#39;.&#39; as CC separator</td>
 </tr>
 </tbody></table>
-<h2 id='check-contact-code-availability'>Check contact code availability</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/contacts/check/PUDERJAKAPSAS'</span> <span class="se">\</span>
+<h2 id='check-contact-code-availability'>Check contact code availability</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/contacts/check/PUDERJAKAPSAS'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -873,7 +882,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Contact ID to check</td>
 </tr>
 </tbody></table>
-<h1 id='domains'>Domains</h1><h2 id='get-all-existing-domains'>Get all existing domains</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains'</span> <span class="se">\</span>
+<h1 id='domains'>Domains</h1><h2 id='get-all-existing-domains'>Get all existing domains</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/domains'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -1008,7 +1017,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>false</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-domain'>Get a specific domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/biz.ee'</span> <span class="se">\</span>
+<h2 id='get-a-specific-domain'>Get a specific domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/domains/biz.ee'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -1093,7 +1102,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Domain name</td>
 </tr>
 </tbody></table>
-<h2 id='register-a-new-domain'>Register a new domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains'</span> <span class="se">\</span>
+<h2 id='register-a-new-domain'>Register a new domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1232,7 +1241,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>DNSSEC public key</td>
 </tr>
 </tbody></table>
-<h2 id='change-domain-registrant-auth-code'>Change domain registrant / Auth code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/domains/kasskoer.ee'</span> <span class="se">\</span>
+<h2 id='change-domain-registrant-auth-code'>Change domain registrant / Auth code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://testrar.internet.ee/repp/v1/domains/kasskoer.ee'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1310,7 +1319,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>New EPP authorization code for domain</td>
 </tr>
 </tbody></table>
-<h2 id='renew-a-specific-domain'>Renew a specific domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/kasskoer.ee/renew'</span> <span class="se">\</span>
+<h2 id='renew-a-specific-domain'>Renew a specific domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains/kasskoer.ee/renew'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1374,7 +1383,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>For how many period units to register domain</td>
 </tr>
 </tbody></table>
-<h1 id='nameservers'>Nameservers</h1><h2 id='add-new-nameserver'>Add new nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/nameservers'</span> <span class="se">\</span>
+<h1 id='nameservers'>Nameservers</h1><h2 id='add-new-nameserver'>Add new nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains/kotlet.ee/nameservers'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1451,7 +1460,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Array of IPv6 addresses</td>
 </tr>
 </tbody></table>
-<h2 id='delete-existing-nameserver'>Delete existing nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/nameservers/ns3.domainer.ee'</span> <span class="se">\</span>
+<h2 id='delete-existing-nameserver'>Delete existing nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://testrar.internet.ee/repp/v1/domains/kotlet.ee/nameservers/ns3.domainer.ee'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -1490,7 +1499,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>nameserver hostname to delete</td>
 </tr>
 </tbody></table>
-<h1 id='dnssec'>DNSSEC</h1><h2 id='get-domain-39-s-dnssec-keys'>Get domain&#39;s DNSSEC keys</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
+<h1 id='dnssec'>DNSSEC</h1><h2 id='get-domain-39-s-dnssec-keys'>Get domain&#39;s DNSSEC keys</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
 </code></pre></div>
@@ -1529,7 +1538,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Domain name</td>
 </tr>
 </tbody></table>
-<h2 id='add-new-dnssec-key'>Add new DNSSEC key</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
+<h2 id='add-new-dnssec-key'>Add new DNSSEC key</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1613,7 +1622,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>DNSSEC public key</td>
 </tr>
 </tbody></table>
-<h2 id='delete-dnssec-key'>Delete DNSSEC key</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://registry.test/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
+<h2 id='delete-dnssec-key'>Delete DNSSEC key</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://testrar.internet.ee/repp/v1/domains/666.ee/dnssec'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1697,7 +1706,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Public key of existing DNSSEC key</td>
 </tr>
 </tbody></table>
-<h1 id='transfers'>Transfers</h1><h2 id='get-transfer-info'>Get transfer info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/transfer_info'</span> <span class="se">\</span>
+<h1 id='transfers'>Transfers</h1><h2 id='get-transfer-info'>Get transfer info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/domains/kotlet.ee/transfer_info'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Auth-Code: 6699fb661ee3a2006a3d1e5833d7c5abv'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
@@ -1801,7 +1810,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Queried domain&#39;s EPP authorization code</td>
 </tr>
 </tbody></table>
-<h2 id='transfer-domain'>Transfer domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/666.ee/transfer'</span> <span class="se">\</span>
+<h2 id='transfer-domain'>Transfer domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains/666.ee/transfer'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1863,7 +1872,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>EPP authorization code</td>
 </tr>
 </tbody></table>
-<h1 id='bulk-actions'>Bulk actions</h1><h2 id='bulk-domain-transfer'>Bulk domain transfer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/transfer'</span> <span class="se">\</span>
+<h1 id='bulk-actions'>Bulk actions</h1><h2 id='bulk-domain-transfer'>Bulk domain transfer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains/transfer'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1939,7 +1948,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>EPP authorization code</td>
 </tr>
 </tbody></table>
-<h2 id='bulk-tech-contact-replace'>Bulk tech contact replace</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PATCH <span class="s1">'https://registry.test/repp/v1/domains/contacts'</span> <span class="se">\</span>
+<h2 id='bulk-tech-contact-replace'>Bulk tech contact replace</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PATCH <span class="s1">'https://testrar.internet.ee/repp/v1/domains/contacts'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -1993,7 +2002,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>New contact ID to assign as tech contact</td>
 </tr>
 </tbody></table>
-<h2 id='bulk-nameserver-change'>Bulk nameserver change</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/registrar/nameservers'</span> <span class="se">\</span>
+<h2 id='bulk-nameserver-change'>Bulk nameserver change</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://testrar.internet.ee/repp/v1/registrar/nameservers'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -2011,7 +2020,7 @@ Remember — a happy kitten is an authenticated kitten!
 <blockquote>
 <p>If you want to replace nameserver only for specific domains, submit scoped &quot;domains&quot; array like that:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/registrar/nameservers'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://testrar.internet.ee/repp/v1/registrar/nameservers'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
@@ -2115,7 +2124,7 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Array of nameserver&#39;s fixed IPv6 addresses</td>
 </tr>
 </tbody></table>
-<h2 id='bulk-domain-renew'>Bulk domain renew</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/renew/bulk'</span> <span class="se">\</span>
+<h2 id='bulk-domain-renew'>Bulk domain renew</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains/renew/bulk'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
