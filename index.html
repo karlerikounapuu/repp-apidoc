@@ -374,9 +374,6 @@
                   <li>
                     <a href="#renew-a-specific-domain" class="toc-h2 toc-link" data-title="Renew a specific domain">Renew a specific domain</a>
                   </li>
-                  <li>
-                    <a href="#get-transfer-info" class="toc-h2 toc-link" data-title="Get transfer info">Get transfer info</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -405,24 +402,21 @@
               </ul>
           </li>
           <li>
-            <a href="#repp-v1-domains-domain_name-transfer" class="toc-h1 toc-link" data-title="/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER">/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER</a>
+            <a href="#transfers" class="toc-h1 toc-link" data-title="Transfers">Transfers</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#post" class="toc-h2 toc-link" data-title="POST"><strong><em>POST</em></strong></a>
+                    <a href="#get-transfer-info" class="toc-h2 toc-link" data-title="Get transfer info">Get transfer info</a>
+                  </li>
+                  <li>
+                    <a href="#transfer-domain" class="toc-h2 toc-link" data-title="Transfer domain">Transfer domain</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#repp-v1-domains" class="toc-h1 toc-link" data-title="/REPP/V1/DOMAINS">/REPP/V1/DOMAINS</a>
-          </li>
-          <li>
-            <a href="#repp-v1-domains-domain_name-transfer_info" class="toc-h1 toc-link" data-title="/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER_INFO">/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER_INFO</a>
           </li>
           <li>
             <a href="#repp-v1-domains-transfer" class="toc-h1 toc-link" data-title="/REPP/V1/DOMAINS/TRANSFER">/REPP/V1/DOMAINS/TRANSFER</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#post-2" class="toc-h2 toc-link" data-title="POST"><strong><em>POST</em></strong></a>
+                    <a href="#post" class="toc-h2 toc-link" data-title="POST"><strong><em>POST</em></strong></a>
                   </li>
               </ul>
           </li>
@@ -1371,110 +1365,6 @@ Remember — a happy kitten is an authenticated kitten!
 <td>For how many period units to register domain</td>
 </tr>
 </tbody></table>
-<h2 id='get-transfer-info'>Get transfer info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/transfer_info'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Auth-Code: 6699fb661ee3a2006a3d1e5833d7c5abv'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
-<span class="nt">--data-raw</span> <span class="s1">''</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kotlet.ee"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"registrant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATSAA:E36957D7"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+372.xxx"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ident"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ident_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priv"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ident_country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EE"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"linked"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"admin_contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATSAA:E36957D7"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+372.xxx"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"ident"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"ident_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priv"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"ident_country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EE"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"linked"</span><span class="w">
-              </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"tech_contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATSAA:E36957D7"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+372.xxx"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"ident"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"ident_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priv"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"ident_country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EE"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"linked"</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Gets a specific domain&#39;s transfer info</p>
-<h3 id='http-request-16'>HTTP Request</h3>
-<p><code>GET /repp/v1/domains/:domain_name/transfer_info</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>domain_name</td>
-<td>Yes</td>
-<td>Domain name</td>
-</tr>
-</tbody></table>
-<h3 id='required-headers'>Required Headers</h3>
-<p>Submit domain&#39;s EPP authorization code if domain doesn&#39;t belong to you (yet)</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Auth-Code</td>
-<td>No</td>
-<td>Queried domain&#39;s EPP auth code</td>
-</tr>
-</tbody></table>
 <h1 id='nameservers'>Nameservers</h1><h2 id='add-new-nameserver'>Add new nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/nameservers'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -1502,9 +1392,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Add new nameserver(s) to specific domain</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST /repp/v1/domains/:domain_name/nameservers</code></p>
-<h3 id='url-parameters-12'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1570,9 +1460,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Delete existing nameserver from domain.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>DELETE /repp/v1/domains/:domain_name/nameservers/:nameserver_hostname</code></p>
-<h3 id='url-parameters-13'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1614,9 +1504,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Gets a specific domain&#39;s DNSSEC keys</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET /repp/v1/domains/:domain_name/dnssec</code></p>
-<h3 id='url-parameters-14'>URL Parameters</h3>
+<h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1658,9 +1548,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Add new DNSSEC key(s) to specific domain</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>POST /repp/v1/domains/:domain_name/dnssec</code></p>
-<h3 id='url-parameters-15'>URL Parameters</h3>
+<h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1742,9 +1632,9 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Deletes one or many DNSSEC key(s) for specific domain.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>DELETE /repp/v1/domains/:domain_name/dnssec</code></p>
-<h3 id='url-parameters-16'>URL Parameters</h3>
+<h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1798,53 +1688,173 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Public key of existing DNSSEC key</td>
 </tr>
 </tbody></table>
-<h1 id='repp-v1-domains-domain_name-transfer'>/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER</h1><h2 id='post'><strong><em>POST</em></strong></h2>
-<p><strong>Description:</strong>
-<p>Transfer a specific domain</p></p>
-<h3 id='http-request-22'>HTTP Request</h3>
-<p><code>***POST*** /repp/v1/domains/{domain_name}/transfer</code></p>
-
-<p><strong>Parameters</strong></p>
-
+<h1 id='transfers'>Transfers</h1><h2 id='get-transfer-info'>Get transfer info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/kotlet.ee/transfer_info'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Auth-Code: 6699fb661ee3a2006a3d1e5833d7c5abv'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">''</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kotlet.ee"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"registrant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATSAA:E36957D7"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+372.xxx"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ident"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ident_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priv"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ident_country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"linked"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"admin_contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATSAA:E36957D7"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+372.xxx"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ident"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ident_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priv"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ident_country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EE"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"linked"</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"tech_contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATSAA:E36957D7"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+372.xxx"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ident"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ident_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priv"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ident_country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EE"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"linked"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets a specific domain&#39;s transfer info</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>GET /repp/v1/domains/:domain_name/transfer_info</code></p>
+<h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Name</th>
-<th>Located in</th>
-<th>Description</th>
+<th>Parameter</th>
 <th>Required</th>
-<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>domain_name</td>
-<td>path</td>
-<td></td>
 <td>Yes</td>
-<td>number</td>
-</tr>
-<tr>
-<td>body</td>
-<td>body</td>
-<td></td>
-<td>No</td>
-<td></td>
+<td>Domain name</td>
 </tr>
 </tbody></table>
-
-<p><strong>Responses</strong></p>
+<h3 id='required-headers'>Required Headers</h3>
+<p>Submit domain&#39;s EPP authorization code if domain doesn&#39;t belong to you (yet)</p>
 
 <table><thead>
 <tr>
-<th>Code</th>
+<th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td>ok</td>
+<td>Auth-Code</td>
+<td>No</td>
+<td>Queried domain&#39;s EPP authorization code</td>
 </tr>
 </tbody></table>
-<h1 id='repp-v1-domains'>/REPP/V1/DOMAINS</h1><h1 id='repp-v1-domains-domain_name-transfer_info'>/REPP/V1/DOMAINS/{DOMAIN_NAME}/TRANSFER_INFO</h1><h1 id='repp-v1-domains-transfer'>/REPP/V1/DOMAINS/TRANSFER</h1><h2 id='post-2'><strong><em>POST</em></strong></h2>
+<h2 id='transfer-domain'>Transfer domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/666.ee/transfer'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "transfer": {
+        "transfer_code": "d79d865fdf589a1cd52ae95fde4e5d30"
+    }
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"666.ee"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domain_transfer"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Transfers domain from another registrar to your account.</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>POST /repp/v1/domains/:domain_name/transfer</code></p>
+<h3 id='url-parameters-17'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domain_name</td>
+<td>Yes</td>
+<td>Domain name</td>
+</tr>
+</tbody></table>
+<h3 id='payload-parameters-10'>Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transfer</td>
+<td>Yes</td>
+<td>Object</td>
+<td>Object holding transfer elements</td>
+</tr>
+<tr>
+<td>transfer[transfer_code]</td>
+<td>Yes</td>
+<td>String</td>
+<td>EPP authorization code</td>
+</tr>
+</tbody></table>
+<h1 id='repp-v1-domains-transfer'>/REPP/V1/DOMAINS/TRANSFER</h1><h2 id='post'><strong><em>POST</em></strong></h2>
 <p><strong>Description:</strong>
 <p>Transfer multiple domains</p></p>
 <h3 id='http-request-23'>HTTP Request</h3>
