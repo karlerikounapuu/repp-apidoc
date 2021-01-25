@@ -21,7 +21,21 @@ Welcome to the Estonian Internet Foundation's REST EPP (REPP for short) API docu
 
 We have language bindings in Shell. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-This API project is only available for our active registrars. You can find more information about becoming registrar at our [wiki page](https://www.internet.ee/registrars/terms-and-conditions-for-becoming-a-registrar).
+This production API project is only available for our active registrars. You can find more information about becoming registrar at our [wiki page](https://www.internet.ee/registrars/terms-and-conditions-for-becoming-a-registrar).
+
+<aside class="success">
+Remember — This is a sneak-peek of our REPP service, which isn't in production yet. For now, please rely on standard EPP implementation.
+</aside>
+
+# Environments
+
+Production endpoint: https://registrar.internet.ee/repp/v1/
+
+Sandbox endpoint: https://testrar.internet.ee/repp/v1/
+
+Production environment is only available for our active registrars.
+
+Access to our sandbox environment is not publicly available. We can grant access to third parties upon request.
 
 # Authentication
 
@@ -44,7 +58,7 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 ## Get account balance
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/accounts/balance' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/accounts/balance' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -73,7 +87,7 @@ Get account balance
 ## Get latest unread poll message
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/registrar/notifications' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/registrar/notifications' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -86,7 +100,7 @@ curl --location --request GET 'https://registry.test/repp/v1/registrar/notificat
     "message": "Command completed successfully",
     "data": {
         "id": 1399,
-        "text": "Registrant rejected domain update: biz.ee",
+        "text": "Registrant rejected domain update: koer.ee",
         "attached_obj_type": "Epp::Domain",
         "attached_obj_id": 34
     }
@@ -102,7 +116,7 @@ Get the latest unread poll message
 ## Mark poll message as read
 
 ```shell
-curl --location --request PUT 'https://registry.test/repp/v1/registrar/notifications/1398' \
+curl --location --request PUT 'https://testrar.internet.ee/repp/v1/registrar/notifications/1398' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -143,14 +157,10 @@ Parameter | Required | Description
 --------- | ------- | -----------
 read | Yes | Set to true to mark as read
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
 ## Get a specific poll message
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/registrar/notifications/1398' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/registrar/notifications/1398' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -187,7 +197,7 @@ notification_id | Yes | Notification ID
 ## Get all contacts
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/contacts' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/contacts' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -214,7 +224,7 @@ Get all contacts
 ## Get a specific contact
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/contacts/ATSAA:KARL' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/contacts/ATSAA:KARL' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -261,7 +271,7 @@ contact_id | Yes | Contact ID
 ## Delete a specific contact
 
 ```shell
-curl --location --request DELETE 'https://registry.test/repp/v1/contacts/ATSAA:KARL' \
+curl --location --request DELETE 'https://testrar.internet.ee/repp/v1/contacts/ATSAA:KARL' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -301,16 +311,16 @@ contact_id | Yes | Contact ID
 ## Create a new contact
 
 ```shell
-curl --location --request POST 'https://registry.test/repp/v1/contacts' \
+curl --location --request POST 'https://testrar.internet.ee/repp/v1/contacts' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "contact": {
         "name": "John Doe",
         "email": "john@doe.com",
-        "phone": "+372.59014611",
+        "phone": "+372.xxx",
         "ident": {
-            "ident": "39708290276",
+            "ident": "xxx",
             "ident_type": "priv",
             "ident_country_code": "EE"
         }
@@ -350,10 +360,14 @@ ident[ident] | Yes | Identity / Registry code of contact
 ident[ident_type] | Yes | Type of ident number (priv/org/birthday)
 ident[ident_country_code] | Yes | Nationality of contact in alpha-2 format
 
+<aside class="notice">
+Note — Wrap your payload attributes into "contact" object, as shown in example.
+</aside>
+
 ## Update an existing contact
 
 ```shell
-curl --location --request PUT 'https://registry.test/repp/v1/contacts/ATSAA:84F23FD1' \
+curl --location --request PUT 'https://testrar.internet.ee/repp/v1/contacts/ATSAA:84F23FD1' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -399,10 +413,14 @@ name | No | Full name of contact
 email | No | Email address of contact
 phone | No | phone number of contact, with '.' as CC separator
 
+<aside class="notice">
+Note — Wrap your payload attributes into "contact" object, as shown in example.
+</aside>
+
 ## Check contact code availability
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/contacts/check/PUDERJAKAPSAS' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/contacts/check/PUDERJAKAPSAS' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -439,7 +457,7 @@ contact_id | Yes | Contact ID to check
 ## Get all existing domains
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/domains' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/domains' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -563,7 +581,7 @@ details | No | | false | Show full object each domain
 ## Get a specific domain
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/domains/biz.ee' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/domains/biz.ee' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -648,7 +666,7 @@ domain_name | No | Domain name
 ## Register a new domain
 
 ```shell
-curl --location --request POST 'https://registry.test/repp/v1/domains' \
+curl --location --request POST 'https://testrar.internet.ee/repp/v1/domains' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -712,10 +730,14 @@ dnskeys_attributes[protocol] | Yes | String | Key protocol (3)
 dnskeys_attributes[alg] | Yes | String | DNSSEC key algorithm (3,5,6,7,8,10,13,14)
 dnskeys_attributes[public_key] | Yes | String | DNSSEC public key
 
+<aside class="notice">
+Note — Wrap your payload attributes into "domain" object, as shown in example.
+</aside>
+
 ## Change domain registrant / Auth code
 
 ```shell
-curl --location --request PUT 'https://registry.test/repp/v1/domains/kasskoer.ee' \
+curl --location --request PUT 'https://testrar.internet.ee/repp/v1/domains/kasskoer.ee' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -763,10 +785,14 @@ registrant[code] | Yes | String | Contact ID of new registrant
 registrant[verified] | No | Boolean | Defaults to false. Include it only if set to true.
 auth_info | No | String | New EPP authorization code for domain
 
+<aside class="notice">
+Note — Wrap your payload attributes into "domain" object, as shown in example.
+</aside>
+
 ## Renew a specific domain
 
 ```shell
-curl --location --request POST 'https://registry.test/repp/v1/domains/kasskoer.ee/renew' \
+curl --location --request POST 'https://testrar.internet.ee/repp/v1/domains/kasskoer.ee/renew' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -810,12 +836,16 @@ Parameter | Required | Type | Description
 period_unit | Yes | String | Period unit. Can be year (y) or month (m)
 period | Yes | Integer | For how many period units to register domain
 
+<aside class="notice">
+Note — Wrap your payload attributes into "renew" object, as shown in example.
+</aside>
+
 # Nameservers
 
 ## Add new nameserver
 
 ```shell
-curl --location --request POST 'https://registry.test/repp/v1/domains/kotlet.ee/nameservers' \
+curl --location --request POST 'https://testrar.internet.ee/repp/v1/domains/kotlet.ee/nameservers' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -837,7 +867,7 @@ curl --location --request POST 'https://registry.test/repp/v1/domains/kotlet.ee/
     "message": "Command completed successfully",
     "data": {
         "domain": {
-            "name": "666.ee"
+            "name": "kotlet.ee"
         }
     }
 }
@@ -867,7 +897,7 @@ nameservers[ipv6] | No | Array | Array of IPv6 addresses
 ## Delete existing nameserver
 
 ```shell
-curl --location --request DELETE 'https://registry.test/repp/v1/domains/kotlet.ee/nameservers/ns3.domainer.ee' \
+curl --location --request DELETE 'https://testrar.internet.ee/repp/v1/domains/kotlet.ee/nameservers/ns3.domainer.ee' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -904,7 +934,7 @@ nameserver_hostname | Yes | nameserver hostname to delete
 ## Get domain's DNSSEC keys
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/domains/666.ee/dnssec' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/domains/666.ee/dnssec' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
 ```
@@ -943,7 +973,7 @@ domain_name | Yes | Domain name
 ## Add new DNSSEC key
 
 ```shell
-curl --location --request POST 'https://registry.test/repp/v1/domains/666.ee/dnssec' \
+curl --location --request POST 'https://testrar.internet.ee/repp/v1/domains/666.ee/dnssec' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -997,7 +1027,7 @@ dns_keys[public_key] | Yes | String | DNSSEC public key
 ## Delete DNSSEC key
 
 ```shell
-curl --location --request DELETE 'https://registry.test/repp/v1/domains/666.ee/dnssec' \
+curl --location --request DELETE 'https://testrar.internet.ee/repp/v1/domains/666.ee/dnssec' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -1053,7 +1083,7 @@ dns_keys[public_key] | Yes | String | Public key of existing DNSSEC key
 ## Get transfer info
 
 ```shell
-curl --location --request GET 'https://registry.test/repp/v1/domains/kotlet.ee/transfer_info' \
+curl --location --request GET 'https://testrar.internet.ee/repp/v1/domains/kotlet.ee/transfer_info' \
 --header 'Auth-Code: 6699fb661ee3a2006a3d1e5833d7c5abv' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --data-raw ''
@@ -1149,7 +1179,7 @@ Auth-Code | No | Queried domain's EPP authorization code
 ## Transfer domain
 
 ```shell
-curl --location --request POST 'https://registry.test/repp/v1/domains/666.ee/transfer' \
+curl --location --request POST 'https://testrar.internet.ee/repp/v1/domains/666.ee/transfer' \
 --header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -1193,33 +1223,239 @@ Parameter | Required | Type | Description
 transfer | Yes | Object | Object holding transfer elements
 transfer[transfer_code] | Yes | String | EPP authorization code
 
+# Bulk actions
 
+## Bulk domain transfer
 
+```shell
+curl --location --request POST 'https://testrar.internet.ee/repp/v1/domains/transfer' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "data": {
+        "domain_transfers": [
+            {
+                "domain_name": "domain1.ee",
+                "transfer_code": "a45e543ddabee202f95eebae5a7c917c"
+            },
+            {
+                "domain_name": "domain2.ee",
+                "transfer_code": "cce67ca63adc8c2938f199f10108881e"
+            }
+        ]
+    }
+}'
+```
 
+> The above command returns JSON structured like this:
 
+```json
+{
+    "code": 1000,
+    "message": "Command completed successfully",
+    "data": {
+        "success": [
+            {
+                "type": "domain_transfer",
+                "domain_name": "domain1.ee"
+            },
+            {
+                "type": "domain_transfer",
+                "domain_name": "domain2.ee"
+            }
+        ],
+        "failed": []
+    }
+}
+```
 
-
-
-
-# /REPP/V1/DOMAINS/TRANSFER
-## ***POST***
-
-**Description:**
-<p>Transfer multiple domains</p>
-
+Transfers multiple domains from another registrar to your account.
 
 ### HTTP Request
-`***POST*** /repp/v1/domains/transfer`
 
-**Parameters**
+`POST /repp/v1/domains/transfer`
 
-| Name | Located in | Description | Required | Type |
-| ---- | ---------- | ----------- | -------- | ---- |
+### Payload Parameters
 
-**Responses**
+Parameter | Required | Type | Description
+--------- | ------- | ----- | -----------
+data | Yes | Object | Object holding domain_transfers array
+data[domain_transfers] | Yes | Array | Array of domain transfer objects
+data[domain_transfers][domain_name] | Yes | String | Domain name
+data[domain_transfers][transfer_code] | Yes | String | EPP authorization code
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | ok |
+## Bulk tech contact replace
 
-<!-- Converted with the swagger-to-slate https://github.com/lavkumarv/swagger-to-slate -->
+```shell
+curl --location --request PATCH 'https://testrar.internet.ee/repp/v1/domains/contacts' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "current_contact_id": "ATSAA:B839862D",
+    "new_contact_id": "ATSAA:KARL"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "code": 1000,
+    "message": "Command completed successfully",
+    "data": {
+        "success": [
+            {
+                "type": "domain_transfer",
+                "domain_name": "kotlet.ee"
+            },
+            {
+                "type": "domain_transfer",
+                "domain_name": "kanakotlet.ee"
+            }
+        ],
+        "failed": []
+    }
+}
+```
+
+Cycles through every domain and replaces specific tech contact with another one.
+
+### HTTP Request
+
+`PATCH /repp/v1/domains/contacts`
+
+### Payload Parameters
+
+Parameter | Required | Type | Description
+--------- | ------- | ----- | -----------
+current_contact_id | Yes | String | Tech contact ID you wish to replace
+new_contact_id | Yes | String | New contact ID to assign as tech contact
+
+## Bulk nameserver change
+
+```shell
+curl --location --request PUT 'https://testrar.internet.ee/repp/v1/registrar/nameservers' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "data": {
+        "type": "nameserver",
+        "id": "ns1.domainer.ee",
+        "attributes": {
+            "hostname": "ns1.ams1.domainer.ee",
+            "ipv4": ["192.168.1.1"],
+            "ipv6": ["2620:119:35::36"]
+        }
+    }
+}'
+```
+> If you want to replace nameserver only for specific domains, submit scoped "domains" array like that:
+
+```shell
+curl --location --request PUT 'https://testrar.internet.ee/repp/v1/registrar/nameservers' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "data": {
+        "type": "nameserver",
+        "id": "ns1.ams1.domainer.ee",
+        "domains": ["only.ee", "these.ee", "domains.ee"],
+        "attributes": {
+            "hostname": "ns2.ams1.domainer.ee",
+            "ipv4": ["192.168.1.1"],
+            "ipv6": ["2620:119:35::36"]
+        }
+    }
+}'
+```
+
+> Both commands above return JSON structured like this:
+
+```json
+{
+    "code": 1000,
+    "message": "Command completed successfully",
+    "data": {
+        "type": "nameserver",
+        "id": "ns1.ams1.domainer.ee",
+        "attributes": {
+            "hostname": "ns1.ams1.domainer.ee",
+            "ipv4": [
+                "192.168.1.1"
+            ],
+            "ipv6": [
+                "2620:119:35::36"
+            ]
+        },
+        "affected_domains": [
+            "only.ee",
+            "these.ee",
+            "domains.ee"
+        ],
+        "skipped_domains": []
+    }
+}
+```
+
+Cycles through every domain and replaces their specific nameserver with new data.
+
+### HTTP Request
+
+`PATCH /repp/v1/domains/contacts`
+
+### Payload Parameters
+
+Parameter | Required | Type | Description
+--------- | ------- | ----- | -----------
+data | Yes | Object | Object holding nameserver changes
+data[type] | Yes | String | Always set it as "nameserver"
+data[id] | Yes | String | Hostname of replacable nameserver
+data[domains] | No | Array | Array of domain names qualified for nameserver replacement.
+data[attributes] Yes | Object | Object holding new nameserver values
+data[attributes][hostname] | Yes | String | New hostname of nameserver
+data[attributes][ipv4] | No | Array | Array of nameserver's fixed IPv4 addresses
+data[attributes][ipv6] | No | Array | Array of nameserver's fixed IPv6 addresses
+
+<aside class="warning">
+Note - It's safer to use "domains" scope, although it's not required. If you don't submit "domains" array, we're going to take every domain in registrar's account to cycle, which can, from experience, deal pretty large damage.
+</aside>
+
+## Bulk domain renew
+
+```shell
+curl --location --request POST 'https://testrar.internet.ee/repp/v1/domains/renew/bulk' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "domains": ["kotlet.ee", "kasskoer.ee"],
+    "renew_period": "1y"
+}'
+```
+
+> Command above returns JSON structured like this:
+
+```json
+{
+    "code": 1000,
+    "message": "Command completed successfully",
+    "data": {
+        "updated_domains": [
+            "kotlet.ee",
+            "kasskoer.ee"
+        ]
+    }
+}
+```
+
+Renews multiple domanins at once, for a fixed period.
+
+### HTTP Request
+
+`POST /repp/v1/domains/renew/bulk`
+
+### Payload Parameters
+
+Parameter | Required | Type | Description
+--------- | ------- | ----- | -----------
+domains | Yes | Array | Array of domain names for renewal
+renew_period | Yes | String | Period for domain renew (3m, 6m, 9m, 1y ... 10y)
