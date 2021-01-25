@@ -450,6 +450,10 @@
 <p>We have language bindings in Shell. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
 <p>This production API project is only available for our active registrars. You can find more information about becoming registrar at our <a href="https://www.internet.ee/registrars/terms-and-conditions-for-becoming-a-registrar">wiki page</a>.</p>
+
+<aside class="success">
+Remember — This is a sneak-peek of our REPP service, which isn't in production yet. For now, please rely on standard EPP implementation.
+</aside>
 <h1 id='environments'>Environments</h1>
 <p>Production endpoint: https://registrar.internet.ee/repp/v1/</p>
 
@@ -564,10 +568,6 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 <td>Set to true to mark as read</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 <h2 id='get-a-specific-poll-message'>Get a specific poll message</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/registrar/notifications/1398'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
@@ -784,6 +784,10 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Nationality of contact in alpha-2 format</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+Note — Wrap your payload attributes into "contact" object, as shown in example.
+</aside>
 <h2 id='update-an-existing-contact'>Update an existing contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://testrar.internet.ee/repp/v1/contacts/ATSAA:84F23FD1'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -849,6 +853,10 @@ Remember — a happy kitten is an authenticated kitten!
 <td>phone number of contact, with &#39;.&#39; as CC separator</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+Note — Wrap your payload attributes into "contact" object, as shown in example.
+</aside>
 <h2 id='check-contact-code-availability'>Check contact code availability</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/contacts/check/PUDERJAKAPSAS'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
@@ -1243,6 +1251,10 @@ Remember — a happy kitten is an authenticated kitten!
 <td>DNSSEC public key</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+Note — Wrap your payload attributes into "domain" object, as shown in example.
+</aside>
 <h2 id='change-domain-registrant-auth-code'>Change domain registrant / Auth code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://testrar.internet.ee/repp/v1/domains/kasskoer.ee'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -1321,6 +1333,10 @@ Remember — a happy kitten is an authenticated kitten!
 <td>New EPP authorization code for domain</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+Note — Wrap your payload attributes into "contact" object, as shown in example.
+</aside>
 <h2 id='renew-a-specific-domain'>Renew a specific domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains/kasskoer.ee/renew'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -1385,6 +1401,10 @@ Remember — a happy kitten is an authenticated kitten!
 <td>For how many period units to register domain</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+Note — Wrap your payload attributes into "renew" object, as shown in example.
+</aside>
 <h1 id='nameservers'>Nameservers</h1><h2 id='add-new-nameserver'>Add new nameserver</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains/kotlet.ee/nameservers'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -2126,6 +2146,10 @@ Remember — a happy kitten is an authenticated kitten!
 <td>Array of nameserver&#39;s fixed IPv6 addresses</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+Note - It's safer to use "domains" scope, although it's not required. If you don't submit "domains" array, we're going to take every domain in registrar's account to cycle, which can, from experience, deal pretty large damage.
+</aside>
 <h2 id='bulk-domain-renew'>Bulk domain renew</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://testrar.internet.ee/repp/v1/domains/renew/bulk'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -2175,10 +2199,10 @@ Remember — a happy kitten is an authenticated kitten!
 </tbody></table>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+This error section only covers HTTP codes. In additional to HTTP code, with each request, we provide EPP "code" attribute and human-readable "message" as well.
 </aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>The REPP API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -2196,15 +2220,15 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The requested object is hidden for administrators only.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The specified object could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access a object with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -2212,7 +2236,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>Gone -- The requested object has been removed from our servers.</td>
 </tr>
 <tr>
 <td>418</td>
@@ -2220,7 +2244,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too many objects! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
