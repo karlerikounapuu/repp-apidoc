@@ -998,11 +998,33 @@ Remember — a happy kitten is an authenticated kitten!
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET /repp/v1/registrar/domains</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
-<p>Parameter | Required | Default | Description
---------- | ------- | -----------
-limit | No | 200 | How many objects to return
-offset | No | 0 | Object query offset
-details | No | | false | Show full object each domain</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>No</td>
+<td>200</td>
+<td>How many objects to return</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>No</td>
+<td>0</td>
+<td>Object query offset</td>
+</tr>
+<tr>
+<td>details</td>
+<td>No</td>
+<td></td>
+<td>false</td>
+</tr>
+</tbody></table>
 <h2 id='get-a-specific-domain'>Get a specific domain</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://registry.test/repp/v1/domains/biz.ee'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
@@ -1128,23 +1150,105 @@ details | No | | false | Show full object each domain</p>
 <h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST /repp/v1/domains</code></p>
 <h3 id='payload-parameters-4'>Payload Parameters</h3>
-<p>Parameter | Required | Type | Description
---------- | ------- | -----------
-name | Yes | String | Domain name
-registrant_id | Yes | String | Registrant contact code
-period_unit | Yes | String | Period unit. Can be year (y) or month (m)
-period | Yes | Integer | For how many period units to register domain
-admin_domain_contact_attributes | No | Array | Array of admin domain contact codes
-tech_domain_contact_attributes | No | Array | Array of tech domain contact codes
-nameservers_attributes | No | Array | Array of nameserver objects
-nameservers_attributes[hostname] | Yes | String | Hostname of nameserver
-nameservers_attributes[ipv4] | Yes | Array | Array of IPv4 attributes
-nameservers_attributes[ipv6] | Yes | Array | Array of IPv6 attributes
-dnskeys_attributes | No | Array | Array of DNSSEC key attributes
-dnskeys_attributes[flags] | Yes | String | 256 (KSK) or 257 (ZSK)
-dnskeys_attributes[protocol] | Yes | String | Key protocol (3)
-dnskeys_attributes[alg] | Yes | String | DNSSEC key algorithm (3,5,6,7,8,10,13,14)
-dnskeys_attributes[public_key] | Yes | String | DNSSEC public key</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Yes</td>
+<td>String</td>
+<td>Domain name</td>
+</tr>
+<tr>
+<td>registrant_id</td>
+<td>Yes</td>
+<td>String</td>
+<td>Registrant contact code</td>
+</tr>
+<tr>
+<td>period_unit</td>
+<td>Yes</td>
+<td>String</td>
+<td>Period unit. Can be year (y) or month (m)</td>
+</tr>
+<tr>
+<td>period</td>
+<td>Yes</td>
+<td>Integer</td>
+<td>For how many period units to register domain</td>
+</tr>
+<tr>
+<td>admin_domain_contact_attributes</td>
+<td>No</td>
+<td>Array</td>
+<td>Array of admin domain contact codes</td>
+</tr>
+<tr>
+<td>tech_domain_contact_attributes</td>
+<td>No</td>
+<td>Array</td>
+<td>Array of tech domain contact codes</td>
+</tr>
+<tr>
+<td>nameservers_attributes</td>
+<td>No</td>
+<td>Array</td>
+<td>Array of nameserver objects</td>
+</tr>
+<tr>
+<td>nameservers_attributes[hostname]</td>
+<td>Yes</td>
+<td>String</td>
+<td>Hostname of nameserver</td>
+</tr>
+<tr>
+<td>nameservers_attributes[ipv4]</td>
+<td>Yes</td>
+<td>Array</td>
+<td>Array of IPv4 attributes</td>
+</tr>
+<tr>
+<td>nameservers_attributes[ipv6]</td>
+<td>Yes</td>
+<td>Array</td>
+<td>Array of IPv6 attributes</td>
+</tr>
+<tr>
+<td>dnskeys_attributes</td>
+<td>No</td>
+<td>Array</td>
+<td>Array of DNSSEC key attributes</td>
+</tr>
+<tr>
+<td>dnskeys_attributes[flags]</td>
+<td>Yes</td>
+<td>String</td>
+<td>256 (KSK) or 257 (ZSK)</td>
+</tr>
+<tr>
+<td>dnskeys_attributes[protocol]</td>
+<td>Yes</td>
+<td>String</td>
+<td>Key protocol (3)</td>
+</tr>
+<tr>
+<td>dnskeys_attributes[alg]</td>
+<td>Yes</td>
+<td>String</td>
+<td>DNSSEC key algorithm (3,5,6,7,8,10,13,14)</td>
+</tr>
+<tr>
+<td>dnskeys_attributes[public_key]</td>
+<td>Yes</td>
+<td>String</td>
+<td>DNSSEC public key</td>
+</tr>
+</tbody></table>
 <h2 id='change-domain-registrant-auth-code'>Change domain registrant / Auth code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/domains/kasskoer.ee'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -1174,9 +1278,21 @@ dnskeys_attributes[public_key] | Yes | String | DNSSEC public key</p>
 <h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST /repp/v1/domains/:domain_name</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
-<p>Parameter | Required | Type | Description
---------- | ------- | -----------
-domain_name | Yes | String | Domain name</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domain_name</td>
+<td>Yes</td>
+<td>String</td>
+<td>Domain</td>
+</tr>
+</tbody></table>
 <h3 id='payload-parameters-5'>Payload Parameters</h3>
 <p>Parameter | Required | Type | Description
 --------- | ------- | -----------
