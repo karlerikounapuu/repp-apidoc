@@ -413,10 +413,19 @@
               </ul>
           </li>
           <li>
-            <a href="#repp-v1-domains-transfer" class="toc-h1 toc-link" data-title="/REPP/V1/DOMAINS/TRANSFER">/REPP/V1/DOMAINS/TRANSFER</a>
+            <a href="#bulk-actions" class="toc-h1 toc-link" data-title="Bulk actions">Bulk actions</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#post" class="toc-h2 toc-link" data-title="POST"><strong><em>POST</em></strong></a>
+                    <a href="#bulk-domain-transfer" class="toc-h2 toc-link" data-title="Bulk domain transfer">Bulk domain transfer</a>
+                  </li>
+                  <li>
+                    <a href="#bulk-tech-contact-replace" class="toc-h2 toc-link" data-title="Bulk tech contact replace">Bulk tech contact replace</a>
+                  </li>
+                  <li>
+                    <a href="#bulk-nameserver-change" class="toc-h2 toc-link" data-title="Bulk nameserver change">Bulk nameserver change</a>
+                  </li>
+                  <li>
+                    <a href="#bulk-domain-renew" class="toc-h2 toc-link" data-title="Bulk domain renew">Bulk domain renew</a>
                   </li>
               </ul>
           </li>
@@ -1854,40 +1863,303 @@ Remember — a happy kitten is an authenticated kitten!
 <td>EPP authorization code</td>
 </tr>
 </tbody></table>
-<h1 id='repp-v1-domains-transfer'>/REPP/V1/DOMAINS/TRANSFER</h1><h2 id='post'><strong><em>POST</em></strong></h2>
-<p><strong>Description:</strong>
-<p>Transfer multiple domains</p></p>
+<h1 id='bulk-actions'>Bulk actions</h1><h2 id='bulk-domain-transfer'>Bulk domain transfer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/transfer'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "data": {
+        "domain_transfers": [
+            {
+                "domain_name": "domain1.ee",
+                "transfer_code": "a45e543ddabee202f95eebae5a7c917c"
+            },
+            {
+                "domain_name": "domain2.ee",
+                "transfer_code": "cce67ca63adc8c2938f199f10108881e"
+            }
+        ]
+    }
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domain_transfer"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"domain_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mdv.ee"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domain_transfer"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"domain_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tranfeer.ee"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"failed"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Transfers multiple domains from another registrar to your account.</p>
 <h3 id='http-request-23'>HTTP Request</h3>
-<p><code>***POST*** /repp/v1/domains/transfer</code></p>
-
-<p><strong>Parameters</strong></p>
-
+<p><code>POST /repp/v1/domains/transfer</code></p>
+<h3 id='payload-parameters-11'>Payload Parameters</h3>
 <table><thead>
 <tr>
-<th>Name</th>
-<th>Located in</th>
-<th>Description</th>
+<th>Parameter</th>
 <th>Required</th>
 <th>Type</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
-<p><strong>Responses</strong></p>
-
-<table><thead>
-<tr>
-<th>Code</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td>ok</td>
+<td>data</td>
+<td>Yes</td>
+<td>Object</td>
+<td>Object holding domain_transfers array</td>
+</tr>
+<tr>
+<td>data[domain_transfers]</td>
+<td>Yes</td>
+<td>Array</td>
+<td>Array of domain transfer objects</td>
+</tr>
+<tr>
+<td>data[domain_transfers][domain_name]</td>
+<td>Yes</td>
+<td>String</td>
+<td>Domain name</td>
+</tr>
+<tr>
+<td>data[domain_transfers][transfer_code]</td>
+<td>Yes</td>
+<td>String</td>
+<td>EPP authorization code</td>
 </tr>
 </tbody></table>
-
-<!-- Converted with the swagger-to-slate https://github.com/lavkumarv/swagger-to-slate -->
+<h2 id='bulk-tech-contact-replace'>Bulk tech contact replace</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PATCH <span class="s1">'https://registry.test/repp/v1/domains/contacts'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "current_contact_id": "ATSAA:B839862D",
+    "new_contact_id": "ATSAA:KARL"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domain_transfer"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"domain_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mdv.ee"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domain_transfer"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"domain_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tranfeer.ee"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"failed"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Cycles through every domain and replaces specific tech contact with another one.</p>
+<h3 id='http-request-24'>HTTP Request</h3>
+<p><code>PATCH /repp/v1/domains/contacts</code></p>
+<h3 id='payload-parameters-12'>Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>current_contact_id</td>
+<td>Yes</td>
+<td>String</td>
+<td>Tech contact ID you wish to replace</td>
+</tr>
+<tr>
+<td>new_contact_id</td>
+<td>Yes</td>
+<td>String</td>
+<td>New contact ID to assign as tech contact</td>
+</tr>
+</tbody></table>
+<h2 id='bulk-nameserver-change'>Bulk nameserver change</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/registrar/nameservers'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "data": {
+        "type": "nameserver",
+        "id": "ns1.domainer.ee",
+        "attributes": {
+            "hostname": "ns1.ams1.domainer.ee",
+            "ipv4": ["192.168.1.1"],
+            "ipv6": ["2620:119:35::36"]
+        }
+    }
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>If you want to replace nameserver only for specific domains, submit scoped &quot;domains&quot; array like that:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://registry.test/repp/v1/registrar/nameservers'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "data": {
+        "type": "nameserver",
+        "id": "ns1.ams1.domainer.ee",
+        "domains": ["only.ee", "these.ee", "domains.ee"],
+        "attributes": {
+            "hostname": "ns2.ams1.domainer.ee",
+            "ipv4": ["192.168.1.1"],
+            "ipv6": ["2620:119:35::36"]
+        }
+    }
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>Both commands above return JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nameserver"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ns1.ams1.domainer.ee"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ns1.ams1.domainer.ee"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ipv4"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"192.168.1.1"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"ipv6"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"2620:119:35::36"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"affected_domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"kotlet.ee"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"skipped_domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Cycles through every domain and replaces their specific nameserver with new data.</p>
+<h3 id='http-request-25'>HTTP Request</h3>
+<p><code>PATCH /repp/v1/domains/contacts</code></p>
+<h3 id='payload-parameters-13'>Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>Yes</td>
+<td>Object</td>
+<td>Object holding nameserver changes</td>
+</tr>
+<tr>
+<td>data[type]</td>
+<td>Yes</td>
+<td>String</td>
+<td>Always set it as &quot;nameserver&quot;</td>
+</tr>
+<tr>
+<td>data[id]</td>
+<td>Yes</td>
+<td>String</td>
+<td>Hostname of replacable nameserver</td>
+</tr>
+<tr>
+<td>data[domains]</td>
+<td>No</td>
+<td>Array</td>
+<td>Array of domain names qualified for nameserver replacement.</td>
+</tr>
+<tr>
+<td>data[attributes] Yes</td>
+<td>Object</td>
+<td>Object holding new nameserver values</td>
+<td></td>
+</tr>
+<tr>
+<td>data[attributes][hostname]</td>
+<td>Yes</td>
+<td>String</td>
+<td>New hostname of nameserver</td>
+</tr>
+<tr>
+<td>data[attributes][ipv4]</td>
+<td>No</td>
+<td>Array</td>
+<td>Array of nameserver&#39;s fixed IPv4 addresses</td>
+</tr>
+<tr>
+<td>data[attributes][ipv6]</td>
+<td>No</td>
+<td>Array</td>
+<td>Array of nameserver&#39;s fixed IPv6 addresses</td>
+</tr>
+</tbody></table>
+<h2 id='bulk-domain-renew'>Bulk domain renew</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://registry.test/repp/v1/domains/renew/bulk'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "domains": ["kotlet.ee", "kasskoer.ee"],
+    "renew_period": "1y"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>Command above returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Command completed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"updated_domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"kotlet.ee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"kasskoer.ee"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Renews multiple domanins at once, for a fixed period.</p>
+<h3 id='http-request-26'>HTTP Request</h3>
+<p><code>POST /repp/v1/domains/renew/bulk</code></p>
+<h3 id='payload-parameters-14'>Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domains</td>
+<td>Yes</td>
+<td>Array</td>
+<td>Array of domain names for renewal</td>
+</tr>
+<tr>
+<td>renew_period</td>
+<td>Yes</td>
+<td>String</td>
+<td>Period for domain renew (3m, 6m, 9m, 1y ... 10y)</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
