@@ -840,6 +840,52 @@ period | Yes | Integer | For how many period units to register domain
 Note — Wrap your payload attributes into "renew" object, as shown in example.
 </aside>
 
+## Delete a specific domain
+
+```shell
+curl --location --request DELETE 'https://registry.test/repp/v1/domains/kanakotlet.ee' \
+--header 'Authorization: Basic dGVzdDp0ZXN0MTIz' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "delete": {
+        "verified": false
+    }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "code": 1000,
+    "message": "Command completed successfully",
+    "data": {
+        "domain": {
+            "name": "kanakotlet.ee"
+        }
+    }
+}
+```
+
+Deletes a specific domain
+
+### HTTP Request
+
+`DELETE /repp/v1/contacts/:contact_id`
+
+### URL Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+contact_id | Yes | Contact ID
+
+### Payload Parameters
+
+Parameter | Required | Type | Description
+--------- | ------- | ----- | -----------
+delete | Yes | Hash | Hash holding verified flag
+verified | Yes | Boolean | Whether to ask registrant confirmation or not
+
 # Nameservers
 
 ## Add new nameserver
