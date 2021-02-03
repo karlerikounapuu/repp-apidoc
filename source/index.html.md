@@ -768,7 +768,7 @@ Changes domain registrant or auth code
 
 ### HTTP Request
 
-`POST /repp/v1/domains/:domain_name`
+`PUT /repp/v1/domains/:domain_name`
 
 ### URL Parameters
 Parameter | Required | Type | Description
