@@ -139,23 +139,23 @@ curl --location --request PUT 'https://testrar.internet.ee/repp/v1/registrar/not
 }
 ```
 
-Mark poll message as read
+Marks unread poll message as read
 
 ### HTTP Request
 
-`PUT /repp/v1/registrar/notifications/:notification_id`
+`PUT /repp/v1/registrar/notifications/:unread_notification_id`
 
 ### URL Parameters
 
 Parameter | Required | Description
 --------- | ------- | -----------
-notification_id | Yes | Notification ID
+notification_id | Yes | Unread notification ID
 
 ### Payload Parameters
 
 Parameter | Required | Description
 --------- | ------- | -----------
-read | Yes | Set to true to mark as read
+read | Yes | Allows only value 'true'
 
 ## Get a specific poll message
 
@@ -219,7 +219,7 @@ Get all contacts
 
 ### HTTP Request
 
-`GET /repp/v1/registrar/contacts`
+`GET /repp/v1/contacts`
 
 ## Get a specific contact
 
