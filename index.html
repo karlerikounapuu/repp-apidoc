@@ -540,9 +540,9 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Mark poll message as read</p>
+<p>Marks unread poll message as read</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>PUT /repp/v1/registrar/notifications/:notification_id</code></p>
+<p><code>PUT /repp/v1/registrar/notifications/:unread_notification_id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -554,7 +554,7 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 <tr>
 <td>notification_id</td>
 <td>Yes</td>
-<td>Notification ID</td>
+<td>Unread notification ID</td>
 </tr>
 </tbody></table>
 <h3 id='payload-parameters'>Payload Parameters</h3>
@@ -568,7 +568,7 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 <tr>
 <td>read</td>
 <td>Yes</td>
-<td>Set to true to mark as read</td>
+<td>Allows only value &#39;true&#39;</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-poll-message'>Get a specific poll message</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/registrar/notifications/1398'</span> <span class="se">\</span>
@@ -624,7 +624,7 @@ You must replace <code>dGVzdDp0ZXN0MTIz</code> with your personal API key.
 </span></code></pre></div>
 <p>Get all contacts</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET /repp/v1/registrar/contacts</code></p>
+<p><code>GET /repp/v1/contacts</code></p>
 <h2 id='get-a-specific-contact'>Get a specific contact</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://testrar.internet.ee/repp/v1/contacts/ATSAA:KARL'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Basic dGVzdDp0ZXN0MTIz'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">''</span>
